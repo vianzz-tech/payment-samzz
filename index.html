@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAYMENT SAMZZ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('https://img1.pixhost.to/images/6774/615576586_imgtmp.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .payment-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .payment-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .payment-details {
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        .payment-info {
+            margin: 10px 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .copy-btn i {
+            font-size: 1rem;
+        }
+
+        .qris-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .qris-container.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .qris-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .qris-container.active .qris-img {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .payment-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PAYMENT SAMZZ</h1>
+        
+        <div class="payment-methods">
+            <!-- Dana Payment -->
+            <div class="payment-card">
+                <div class="payment-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA" class="payment-icon">
+                    <h2 class="payment-title">DANA</h2>
+                </div>
+                <div class="payment-details">
+                    <p class="payment-info"><strong>Nomor:</strong> <span id="danaNumber">085711316374</span></p>
+                    <p class="payment-info"><strong>Atas Nama:</strong> samzznc</p>
+                    <button class="copy-btn" onclick="copyToClipboard('danaNumber')">
+                        <i class="fas fa-copy"></i> Salin Nomor
+                    </button>
+                </div>
+            </div>
+            
+            <!-- QRIS Payment -->
+            <div class="payment-card" onclick="showQRIS()">
+                <div class="payment-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QRIS" class="payment-icon">
+                    <h2 class="payment-title">QRIS</h2>
+                </div>
+                <div class="payment-details">
+                    <p class="payment-info">Klik untuk memperbesar QR Code</p>
+                    <img src="https://files.catbox.moe/ljp7bl.jpg" alt="QR Code" style="width: 150px; height: 150px; margin-top: 10px; border-radius: 10px; cursor: pointer;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- QRIS Popup -->
+    <div class="qris-container" id="qrisPopup">
+        <button class="close-btn" onclick="hideQRIS()">&times;</button>
+        <img src="https://files.catbox.moe/ljp7bl.jpg" alt="QR Code" class="qris-img">
+    </div>
+    
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.innerText;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor berhasil disalin: ' + text);
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    alert('Nomor berhasil disalin: ' + text);
+                } catch (e) {
+                    alert('Gagal menyalin nomor, silakan salin manual');
+                }
+                document.body.removeChild(textarea);
+            });
+        }
+        
+        function showQRIS() {
+            document.getElementById('qrisPopup').classList.add('active');
+        }
+        
+        function hideQRIS() {
+            document.getElementById('qrisPopup').classList.remove('active');
+        }
+        
+        // Close QRIS when clicking outside
+        document.getElementById('qrisPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideQRIS();
+            }
+        });
+    </script>
+</body>
+</html>
